@@ -1,4 +1,5 @@
-var locker = require('../lib/Locker');
+var locker = require('../lib/Locker'),
+    fs = require('fs');
 
 var LOCK_ID = "testLocker.js";
 
@@ -25,6 +26,37 @@ exports.autoUpdateLockTest = function(test){
             test.done();
         }, 3000);
 };
+
+exports.lockFileTest = function(test){
+    var LOCK_FILE = ".testLockFile";
+
+    test.equal(locker.getLock(LOCK_ID, LOCK_FILE), true, "Couldn't Get Lock");
+
+    var lockFile = JSON.parse(fs.readFileSync(LOCK_FILE, 'utf-8'));
+    test.equal(lockFile.uuid, LOCK_ID, "LOCK Id does not match.");
+
+    test.ok(parseInt(lockFile.updated), "Lock file Updated value invalid.");
+
+    test.equal(locker.unLock(LOCK_ID, LOCK_FILE), true, "Couldn't Unlock");
+
+    test.done();
+};
+
+/*
+exports.driftChangeTest = function(test){
+    var drift = 10;
+
+    locker.setDrift(drift);
+
+    locker.getLock(LOCK_ID);
+
+    setTimeout(function(){
+        test.equal(locker.hasLock(LOCK_ID), false, "Drift change failed");
+
+        test.done();
+    }, drift*4);
+};
+*/
 
 
 //console.log("Updating Lock: " + locker.updateLock());

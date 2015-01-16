@@ -8,12 +8,12 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: ['lib/**/*.js'],
-                dest: 'dist/<%= pkg.name %>.js'
+                dest: 'dist/<%= pkg.name %>-v<%= pkg.version %>.js'
             }
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+                banner: '/*! <%= pkg.name %>-v<%= pkg.version %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {
                 files: {

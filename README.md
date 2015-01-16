@@ -68,11 +68,8 @@ Stop Auto Updating
 ```
 /*
  Turn off auto updating.
-    timeout - Integer Milliseconds as the update interval
-    id - ID of current process
-    lock_file - lock file for specific resources.
 */
-locker.startAutoUpdate(timeout, id, lock_file);
+locker.stopAutoUpdate();
 ```
 
 Check for Existing Lock

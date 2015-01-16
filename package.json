@@ -1,16 +1,27 @@
 {
   "name": "Locker",
   "version": "0.0.1",
-  "private": true,
+  "description": "A utility to provide resource locking outside of the node process. Using file based locks.",
+  "private": false,
   "scripts": {
-    "start": "node app.js"
+    "test": "grunt test"
   },
+  "repository":{
+    "type": "git",
+    "url": "https://github.com/Setheck/Locker"
+  },
+  "keywords":[
+    "lock"
+  ],
+  "license": "MIT",
   "dependencies": {
+    "uuid": "^2.0.1"
+  },
+  "devDependencies": {
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-uglify": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "uuid": "^2.0.1"
+    "grunt-contrib-watch": "^0.6.1"
   }
 }

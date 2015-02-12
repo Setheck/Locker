@@ -1,5 +1,5 @@
 {
-  "name": "Locker",
+  "name": "fillock",
   "version": "0.0.1",
   "description": "A utility to provide resource locking outside of the node process. Using file based locks.",
   "private": false,

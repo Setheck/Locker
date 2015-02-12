@@ -1,6 +1,6 @@
 {
   "name": "fillock",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A utility to provide resource locking outside of the node process. Using file based locks.",
   "private": false,
   "scripts": {

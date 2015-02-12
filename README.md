@@ -90,3 +90,4 @@ Seth Thompson
 Change Log
 ----------
 v0.0.1 - First Commit - 12/15/2014
+v0.0.2 - Rename to fillock for publish to npm - 02/12/2015

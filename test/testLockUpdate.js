@@ -1,21 +1,21 @@
-var locker = require('../lib/Locker'),
+var fillock = require('../lib/fillock'),
     fs = require('fs');
 
 var LOCK_ID = "testLockUpdate.js";
 
 module.exports = {
     setUp: function(callback){
-        locker.getLock(LOCK_ID);
+        fillock.getLock(LOCK_ID);
 
         callback();
     },
     tearDown: function(callback){
-        locker.unLock(LOCK_ID);
+        fillock.unLock(LOCK_ID);
 
         callback();
     },
     updateLockTest: function(test){
-        test.equal(locker.updateLock(LOCK_ID), true, "Couldn't Update Lock");
+        test.equal(fillock.updateLock(LOCK_ID), true, "Couldn't Update Lock");
 
         test.done();
     },

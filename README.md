@@ -1,4 +1,4 @@
-Locker
+Fillock
 ======
 
 Summary
@@ -10,7 +10,7 @@ So I check the lock at startup and exit if it can't grab the lock.
 
 Usage
 -----
-To use Locker, there are two main components to keeping track of a lock.
+To use Fillock, there are two main components to keeping track of a lock.
 First, a file name which will be used as a location to create a file to be used as the lock itself.
 Second, an id is used to determine if this process has the current lock.
 
@@ -28,7 +28,7 @@ Get a lock
     lock_file - lock file for specific resources.
     Returns Boolean of whether the lock was acquired.
 */
-locker.getLock(id, lock_file);
+fillock.getLock(id, lock_file);
 ```
 
 Update a lock
@@ -39,7 +39,7 @@ Update a lock
     lock_file - lock file for specific resources.
     Returns Boolean of whether the lock was updated successfully.
 */
-locker.updateLock(id, lock_file);
+fillock.updateLock(id, lock_file);
 ```
 
 Release a lock
@@ -50,7 +50,7 @@ Release a lock
     lock_file - lock file for specific resources.
     Returns Boolean of whether the lock was released successfully.
 */
-locker.unLock(id, lock_file);
+fillock.unLock(id, lock_file);
 ```
 
 Start Auto Updating
@@ -61,7 +61,7 @@ Start Auto Updating
     id - ID of current process
     lock_file - lock file for specific resources.
 */
-locker.startAutoUpdate(timeout, id, lock_file);
+fillock.startAutoUpdate(timeout, id, lock_file);
 ```
 
 Stop Auto Updating
@@ -69,7 +69,7 @@ Stop Auto Updating
 /*
  Turn off auto updating.
 */
-locker.stopAutoUpdate();
+fillock.stopAutoUpdate();
 ```
 
 Check for Existing Lock
@@ -80,7 +80,7 @@ Check for Existing Lock
     lock_file - lock file for specific resources.
     Returns Boolean of whether this process has a lock or not.
 */
-locker.hasLock(id, lock_file);
+fillock.hasLock(id, lock_file);
 ```
 
 Author

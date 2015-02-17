@@ -1,6 +1,10 @@
 {
   "name": "fillock",
-  "version": "0.0.2",
+  "version": "0.0.6",
+  "author": {
+    "name": "Seth Thompson",
+    "email": "setheck@gmail.com"
+  },
   "description": "A utility to provide resource locking outside of the node process. Using file based locks.",
   "private": false,
   "scripts": {
@@ -23,5 +27,7 @@
     "grunt-contrib-nodeunit": "^0.4.1",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1"
-  }
+  },
+  "files": [ "lib/fillock.js" ],
+  "main": "./lib/fillock.js"
 }

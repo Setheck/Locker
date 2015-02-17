@@ -1,6 +1,6 @@
 Fillock
 ======
-
+[![Build Status](https://travis-ci.org/Setheck/Locker.svg?branch=master)](https://travis-ci.org/Setheck/Locker)
 Summary
 -------
 This is a home built locking tool designed to be able to lock outside of the node process.

@@ -13,10 +13,41 @@ exports.basicLockTest = function(test){
     test.done();
 };
 
+exports.basicDefaultsLockTest = function(test){
+    test.equal(fillock.getLock(), true, "Couldn't Get Lock");
+
+    test.equal(fillock.updateLock(), true, "Couldn't Update Lock");
+
+    test.equal(fillock.unLock(), true, "Couldn't Unlock");
+
+    test.done();
+};
+
+exports.multiLockTest = function(test) {
+    var lockA_ID = "A";
+    var lockA_File = "A.lock";
+
+    var lockB_ID = "B";
+    var lockB_File = "B.lock";
+
+    fillock.getLock(lockA_ID, lockA_File);
+
+    fillock.getLock(lockB_ID, lockB_File);
+
+    test.equal(fillock.hasLock(lockA_ID, lockA_File), true, "Lock A failed");
+    test.equal(fillock.hasLock(lockB_ID, lockB_File), true, "Lock B failed");
+
+    fillock.unLock(lockA_ID, lockA_File);
+    fillock.unLock(lockB_ID, lockB_File);
+
+    test.done();
+};
+
 exports.autoUpdateLockTest = function(test){
     test.equal(fillock.getLock(LOCK_ID), true, "Couldn't get lock for autoUpdateLockTest");
 
     fillock.startAutoUpdate(2000, LOCK_ID);
+    fillock.setDrift(1500);
 
     setTimeout(function(){
             test.equal(fillock.hasLock(LOCK_ID), true, "Auto Update of lock failed for autoUpdateLockTest");
@@ -28,7 +59,7 @@ exports.autoUpdateLockTest = function(test){
 };
 
 exports.lockFileTest = function(test){
-    var LOCK_FILE = ".testLockFile";
+    var LOCK_FILE = "lockfile.lock";
 
     test.equal(fillock.getLock(LOCK_ID, LOCK_FILE), true, "Couldn't Get Lock");
 
@@ -42,7 +73,6 @@ exports.lockFileTest = function(test){
     test.done();
 };
 
-/*
 exports.driftChangeTest = function(test){
     var drift = 10;
 
@@ -53,10 +83,11 @@ exports.driftChangeTest = function(test){
     setTimeout(function(){
         test.equal(fillock.hasLock(LOCK_ID), false, "Drift change failed");
 
+        fillock.unLock();
+
         test.done();
     }, drift*4);
 };
-*/
 
 
 //console.log("Updating Lock: " + fillock.updateLock());

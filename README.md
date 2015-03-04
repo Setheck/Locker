@@ -1,6 +1,7 @@
 Fillock
 ======
 [![Build Status](https://travis-ci.org/Setheck/Locker.svg?branch=master)](https://travis-ci.org/Setheck/Locker)
+
 Summary
 -------
 This is a home built locking tool designed to be able to lock outside of the node process.
@@ -93,3 +94,5 @@ Change Log
 * v0.0.2 - Rename to fillock for publish to npm - 02/12/2015
 * v0.0.6 - Fix npm repository stuff.
 * v0.0.7 - Set Current State on first retrieval.
+* v0.0.8 - Bugfix hasLock to properly determine if the lock is still valid. A lock is no longer considered validif the it has expired.
+            Added tests and debug logging.

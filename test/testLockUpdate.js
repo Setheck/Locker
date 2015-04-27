@@ -1,5 +1,4 @@
-var fillock = require('../lib/fillock'),
-    fs = require('fs');
+var fillock = require('../lib/fillock');
 
 var LOCK_ID = "testLockUpdate.js";
 

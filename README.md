@@ -1,6 +1,7 @@
 Fillock
 ======
 [![Build Status](https://travis-ci.org/Setheck/Locker.svg?branch=master)](https://travis-ci.org/Setheck/Locker)
+[![Codacy Badge](https://www.codacy.com/project/badge/eb364f35617644fd8e296289e331dc2b)](https://www.codacy.com/app/Setheck/Locker)
 
 Summary
 -------

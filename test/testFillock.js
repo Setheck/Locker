@@ -2,6 +2,7 @@ var fillock = require('../lib/fillock'),
     fs = require('fs');
 
 var LOCK_ID = "testFillock.js";
+//fillock.debug(true);
 
 exports.basicLockTest = function(test){
     test.equal(fillock.getLock(LOCK_ID), true, "Couldn't Get Lock");
@@ -83,14 +84,14 @@ exports.driftChangeTest = function(test){
     setTimeout(function(){
         test.equal(fillock.hasLock(LOCK_ID), false, "Drift change failed");
 
-        fillock.unLock();
+        test.equal(fillock.unLock(LOCK_ID), true, "Couldn't Unlock");
 
         test.done();
     }, drift*4);
 };
 
 exports.lockExpireTest = function(test){
-    var LOCK_FILE = "lockfile.lock";
+    var LOCK_FILE = "lockExpireTest.lock";
     var LOCK_ID_ONE = "ONE";
     var LOCK_ID_TWO = "TWO";
     var drift = 10;
@@ -102,10 +103,27 @@ exports.lockExpireTest = function(test){
     setTimeout(function(){
         test.equal(fillock.getLock(LOCK_ID_TWO, LOCK_FILE), true, "Failed to replace lock");
 
-        fillock.unLock();
+        test.equal(fillock.unLock(LOCK_ID_TWO), true, "Couldn't Unlock");
 
         test.done();
     }, drift * 4);
+};
+
+exports.lockExpireFailure = function(test){
+    var LOCK_FILE = "lockExpireTest.lock";
+    var LOCK_ID_ONE = "ONE";
+    var LOCK_ID_TWO = "TWO";
+    var drift = 10;
+
+    fillock.setDrift(drift);
+
+    test.equal(fillock.getLock(LOCK_ID_ONE, LOCK_FILE), true, "Couldn't Get Lock");
+
+    test.equal(fillock.getLock(LOCK_ID_TWO, LOCK_FILE), false, "Got Unintended Lock");
+
+    test.equal(fillock.unLock(LOCK_ID_ONE), true, "Couldn't Unlock");
+
+    test.done();
 };
 
 

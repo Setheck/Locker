@@ -89,6 +89,25 @@ exports.driftChangeTest = function(test){
     }, drift*4);
 };
 
+exports.lockExpireTest = function(test){
+    var LOCK_FILE = "lockfile.lock";
+    var LOCK_ID_ONE = "ONE";
+    var LOCK_ID_TWO = "TWO";
+    var drift = 10;
+
+    fillock.setDrift(drift);
+
+    test.equal(fillock.getLock(LOCK_ID_ONE, LOCK_FILE), true, "Couldn't Get Lock");
+
+    setTimeout(function(){
+        test.equal(fillock.getLock(LOCK_ID_TWO, LOCK_FILE), true, "Failed to replace lock");
+
+        fillock.unLock();
+
+        test.done();
+    }, drift * 4);
+};
+
 
 //console.log("Updating Lock: " + fillock.updateLock());
 

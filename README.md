@@ -97,3 +97,4 @@ Change Log
 * v0.0.7 - Set Current State on first retrieval.
 * v0.0.8 - Bugfix hasLock to properly determine if the lock is still valid. A lock is no longer considered valid if the it has expired.
             Added tests and debug logging.
+* v0.0.9 - Bugfix getLock will now take over an existing lockFile if one already exists but has drifted past being valid.
